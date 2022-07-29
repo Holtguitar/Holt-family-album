@@ -104,12 +104,6 @@ export default {
       </div>
       <div class="container">
         <img
-          src="https://drive.google.com/file/d/1Z261hDj6cN9rQYGlSzMi1CZlbHpdwV9v/view?usp=sharing"
-          alt="image"
-        />
-      </div>
-      <div class="container">
-        <img
           src="../../assets/public/images/common-blue-butterfly-4658565_640.jpg"
           alt="image"
         />

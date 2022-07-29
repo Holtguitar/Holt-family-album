@@ -13,7 +13,6 @@ export default {
   <div class="app-header">
     <the-nav-bar></the-nav-bar>
   </div>
-  <RouterView />
 </template>
 
 <style>

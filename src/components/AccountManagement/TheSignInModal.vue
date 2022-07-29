@@ -64,6 +64,11 @@ export default {
 
     const login = () => {
       store.dispatch("login", login_form.value);
+
+      setTimeout(function () {
+        login_form.value = "";
+        // Need to make sign in modal close...
+      }, 800);
     };
 
     // const register = () => {
@@ -158,7 +163,7 @@ input:focus:not([type="submit"]) {
 
 input::placeholder {
   color: inherit;
-  padding-left: 10px;
+  padding-left: 1px;
   opacity: 50%;
 }
 
