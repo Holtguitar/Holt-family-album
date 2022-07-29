@@ -32,7 +32,7 @@ li {
 .maternity-judah {
   width: 200px;
   height: 200px;
-  background: url("../../assets/maternity-judah.jpg");
+  background: url("../../assets/public/maternity-judah.jpg");
   background-size: cover;
   border-radius: 15px;
   text-decoration: none;
@@ -41,7 +41,7 @@ li {
 .maternity-carson {
   width: 200px;
   height: 200px;
-  background: url("../../assets/maternity-carson.jpg");
+  background: url("../../assets/public/maternity-carson.jpg");
   background-size: cover;
   border-radius: 15px;
   text-decoration: none;

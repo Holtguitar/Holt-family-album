@@ -46,7 +46,7 @@ a {
 .family-link {
   width: 200px;
   height: 200px;
-  background: url("../../assets/family.jpg");
+  background: url("../../assets/public/family.jpg");
   background-size: cover;
   border-radius: 15px;
   text-decoration: none;
@@ -66,7 +66,7 @@ a {
 .maternity-link {
   width: 200px;
   height: 200px;
-  background: url("../../assets/maternity.jpg");
+  background: url("../../assets/public/maternity.jpg");
   background-size: cover;
   border-radius: 15px;
   text-decoration: none;
@@ -75,7 +75,7 @@ a {
 .wedding-link {
   width: 200px;
   height: 200px;
-  background: url("../../assets/wedding.jpg");
+  background: url("../../assets/public/wedding.jpg");
   background-size: cover;
   border-radius: 15px;
   text-decoration: none;
@@ -84,7 +84,7 @@ a {
 .adventure-link {
   width: 200px;
   height: 200px;
-  background: url("../../assets/adventure.jpg");
+  background: url("../../assets/public/adventure.jpg");
   background-size: cover;
   border-radius: 15px;
   text-decoration: none;

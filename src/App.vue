@@ -10,7 +10,10 @@ export default {
 </script>
 
 <template>
-  <div class="app-header">
+  <div
+    class="app-header"
+    style="background-image: url('../src/assets/public/family-home.JPG')"
+  >
     <the-nav-bar></the-nav-bar>
   </div>
   <RouterView />
@@ -27,7 +30,7 @@ export default {
   height: 80vh;
   margin-top: -3%;
   margin-left: -6.5%;
-  background: url("../src/assets/family-home.JPG") no-repeat center center fixed !important;
+  /* background: url("../src/assets/public/family-home.JPG") no-repeat center center fixed; */
   border-radius: 15px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
