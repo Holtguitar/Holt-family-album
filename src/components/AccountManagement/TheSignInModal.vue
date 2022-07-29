@@ -1,5 +1,5 @@
 <template>
-  <main class="login" v-if="$store.state.clickSignIn">
+  <main class="login" v-if="$store.state.clickSignIn && !$store.state.user">
     <section class="forms">
       <button @click.prevent="closeModal" class="btn--close-modal">
         &times;
