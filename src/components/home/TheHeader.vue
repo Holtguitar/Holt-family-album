@@ -26,8 +26,8 @@ export default {
   height: 80vh;
   margin-top: -3%;
   margin-left: -6.5%;
-  background: url("../src/assets/public/family-home.png") no-repeat center
-    center fixed;
+  background: url("../src/assets/public/familyhome.png") no-repeat center center
+    fixed;
   border-radius: 15px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
