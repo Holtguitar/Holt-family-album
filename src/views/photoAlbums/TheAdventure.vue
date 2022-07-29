@@ -1,10 +1,10 @@
 <script>
 import { RouterLink } from "vue-router";
-import GalleryView from "./GalleryView.vue";
+import PhotoView from "./PhotoView.vue";
 
 export default {
   components: {
-    GalleryView,
+    PhotoView,
   },
 };
 </script>
@@ -14,7 +14,7 @@ export default {
     <RouterLink to="/photo-albums/">&#x3c; &#x3c; Back</RouterLink>
   </li>
   <page-title>Our Adventures</page-title>
-  <gallery-view></gallery-view>
+  <photo-view></photo-view>
 </template>
 
 <style scoped>

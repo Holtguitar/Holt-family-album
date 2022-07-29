@@ -1,3 +1,16 @@
+<script>
+import BlogTemplate from "../components/blog/BlogTemplate.vue";
+
+export default {
+  components: {
+    BlogTemplate,
+  },
+};
+</script>
+
 <template>
-  <div>Blog Page</div>
+  <section>
+    <div>Blog Page</div>
+    <blog-template></blog-template>
+  </section>
 </template>

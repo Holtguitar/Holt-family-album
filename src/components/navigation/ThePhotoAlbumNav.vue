@@ -59,13 +59,14 @@ a {
 .maternity-link:hover,
 .wedding-link:hover,
 .adventure-link:hover {
-  box-shadow: 3px 3px 3px 3px grey;
+  box-shadow: 2px 2px 2px 2px grey;
+  text-decoration: underline !important;
 }
 
 .maternity-link {
   width: 200px;
   height: 200px;
-  background: url("../../assets/maternity-judah.jpg");
+  background: url("../../assets/maternity.jpg");
   background-size: cover;
   border-radius: 15px;
   text-decoration: none;

@@ -3,22 +3,20 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <div>
-    <h1>Maternity Albums</h1>
-  </div>
-  <ul>
-    <li>
-      <RouterLink to="/photo-albums/maternity/judah"
-        >Maternity - Judah</RouterLink
-      >
-    </li>
-
-    <li>
-      <RouterLink to="/photo-albums/maternity/carson"
-        >Maternity - Carson</RouterLink
-      >
-    </li>
-  </ul>
+  <section class="album-links">
+    <div class="album">
+      <RouterLink to="/photo-albums/maternity/judah">
+        <div class="maternity-judah" id="image-container"></div>
+      </RouterLink>
+      <RouterLink to="/photo-albums/maternity/judah">Judah</RouterLink>
+    </div>
+    <div class="album">
+      <RouterLink to="/photo-albums/maternity/carson">
+        <div class="maternity-carson" id="image-container"></div>
+      </RouterLink>
+      <RouterLink to="/photo-albums/maternity/carson">Carson</RouterLink>
+    </div>
+  </section>
 </template>
 
 <style scoped>
@@ -29,5 +27,23 @@ h1 {
 
 li {
   list-style-type: none;
+}
+
+.maternity-judah {
+  width: 200px;
+  height: 200px;
+  background: url("../../assets/maternity-judah.jpg");
+  background-size: cover;
+  border-radius: 15px;
+  text-decoration: none;
+}
+
+.maternity-carson {
+  width: 200px;
+  height: 200px;
+  background: url("../../assets/maternity-carson.jpg");
+  background-size: cover;
+  border-radius: 15px;
+  text-decoration: none;
 }
 </style>

@@ -7,8 +7,12 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "firebase": "^9.9.1",
     "vue": "^3.2.37",
-    "vue-router": "^4.1.2"
+    "vue-gallery": "^2.0.1",
+    "vue-gallery-slideshow": "^1.5.2",
+    "vue-router": "^4.1.2",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",

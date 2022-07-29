@@ -1,12 +1,112 @@
 <script>
-export default {};
+import ImageContainer from "../../components/gallery/ImageContainer.vue";
+import {
+  getStorage,
+  ref as sRef,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import {
+  getDatabase,
+  ref,
+  set,
+  child,
+  get,
+  update,
+  remove,
+} from "firebase/database";
+
+export default {
+  components: { ImageContainer },
+  data() {
+    return {
+      realdb: getDatabase(),
+      files: [],
+      reader: new FileReader(),
+      input: document.createElement("input"),
+    };
+  },
+  methods: {
+    async UploadProcess() {
+      var ImgToUpload = files[0];
+
+      var ImgName = namebox.value + extlab.innerHTML;
+
+      if (!validateName) {
+        alert("Image name contains invalid characters: . # $ [ ]");
+        return;
+      }
+
+      const metaData = {
+        contentType: ImgToUpload.type,
+      };
+
+      const storage = getStorage();
+
+      const storageRef = sRef(storage, "Holt-Family-Gallery/" + ImgName);
+
+      const UploadTask = uploadBytesResumable(
+        storageRef,
+        ImgToUpload,
+        metaData
+      );
+
+      UploadTask.on(
+        "state-change",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          proglab.innerHTML = "Upload Progress: " + progress + "%";
+        },
+        (error) => {
+          alert("Image not uploaded!");
+        },
+        () => {
+          getDownloadURL(UploadTask.snapshot.ref).then((downloadURL) => {
+            console.log(downloadURL);
+          });
+        }
+      );
+    },
+    SaveURLtoRealtimeDB(URL) {
+      var name = namebox.value;
+      var ext = extlab.innerHTML;
+
+      set(ref(realdb, "ImagesLinks/" + name), {
+        ImgName: name + ext,
+        ImgURL: URL,
+      });
+    },
+    async GetURLFromRealtimeDB() {
+      var name = namebox.value;
+      var dbRef = ref(realdb);
+
+      get(child(dbRef, "ImagesLinks/" + name)).then((snapshot) => {
+        if (snapshot.exists()) {
+          myimg.src = snapshot.val().ImgURL;
+        }
+      });
+    },
+    validateName() {
+      var regex = /[\.#$\[\]]/;
+      return !regex.test(namebox.value);
+    },
+  },
+};
 </script>
 
 <template>
+  <!-- <image-container></image-container> -->
   <div class="hero-section">
     <div class="row">
+      <div class="container" @click="input.click">
+        <img src="../../assets/images/add-new.jpeg" alt="image" />
+      </div>
       <div class="container">
-        <img src="../../assets/images/bee-6233397_640.jpg" alt="image" />
+        <img
+          src="https://drive.google.com/file/d/1Z261hDj6cN9rQYGlSzMi1CZlbHpdwV9v/view?usp=sharing"
+          alt="image"
+        />
       </div>
       <div class="container">
         <img

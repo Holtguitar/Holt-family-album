@@ -6,28 +6,9 @@ export default {
   components: {
     TheSignInModal,
   },
-  data() {
-    return {
-      adminSignedIn: true,
-      subscriberSignedIn: false,
-      ShowSignIn: false,
-    };
-  },
   methods: {
-    signOut() {
-      if (this.adminSignedIn === true) {
-        this.adminSignedIn = false;
-      }
-      if (this.subscriberSignedIn === true) {
-        this.subscriberSignedIn = false;
-      }
-      if (adminSignedIn === true || subscriberSignedIn === true) {
-        signedIn = true;
-      }
-    },
-    signIn() {
-      // this.ShowSignIn = true;
-      this.adminSignedIn = true;
+    toggleClickSignIn() {
+      this.$store.state.clickSignIn = !this.$store.state.clickSignIn;
     },
   },
 };
@@ -36,36 +17,37 @@ export default {
 <template>
   <div class="page-header">
     <ul>
-      <li v-if="adminSignedIn || SubscriberSignedIn">
+      <li>
         <RouterLink class="header-nav" to="/">Home</RouterLink>
       </li>
-      <li v-if="adminSignedIn || SubscriberSignedIn">
+      <li>
         <RouterLink class="header-nav" to="/photo-albums">Albums</RouterLink>
       </li>
-      <li v-if="adminSignedIn || SubscriberSignedIn">
+      <li>
         <RouterLink class="header-nav" to="/blog">Blog</RouterLink>
-      </li>
-      <li v-if="adminSignedIn">
-        <RouterLink class="header-nav" to="/account-management">
-          Accounts
-        </RouterLink>
       </li>
       <li class="sign-button">
         <RouterLink
           class="header-nav"
           to="/"
-          v-if="!adminSignedIn && !SubscriberSignedIn"
-          @click="signIn"
+          v-if="!$store.state.user"
+          @click="toggleClickSignIn"
         >
           Sign In
         </RouterLink>
-        <RouterLink class="header-nav" to="/" @click="signOut" v-else
+        <RouterLink
+          class="header-nav"
+          to="/"
+          v-if="$store.state.user"
+          @click="$store.dispatch('logout')"
           >Sign Out</RouterLink
         >
       </li>
     </ul>
   </div>
-  <the-sign-in-modal v-if="ShowSignIn"></the-sign-in-modal>
+  <br />
+
+  <the-sign-in-modal></the-sign-in-modal>
 </template>
 
 <style>
@@ -81,17 +63,10 @@ ul {
   position: relative;
   justify-content: flex-end;
   display: flex;
-  /* padding: 50px; */
   width: 100vw;
   height: 80vh;
   margin-top: -3%;
   margin-left: -6.5%;
-  background: url("src/assets/family-home.JPG") no-repeat center center fixed;
-  border-radius: 15px;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
 }
 
 li {

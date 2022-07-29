@@ -1,56 +1,204 @@
+<template>
+  <main class="login" v-if="$store.state.clickSignIn">
+    <section class="forms">
+      <button @click.prevent="closeModal" class="btn--close-modal">
+        &times;
+      </button>
+      <section>
+        <h2 class="login-header">Admin Login</h2>
+        <form class="login" @submit.prevent="login">
+          <input
+            type="email"
+            placeholder="Email address"
+            v-model="login_form.email"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            v-model="login_form.password"
+          />
+          <input type="submit" value="Login" />
+        </form>
+      </section>
+      <!-- <section>
+        <h2 class="register-header" @click.prevent="toggleRegister">
+          Register
+        </h2>
+        <form
+          class="register"
+          @submit.prevent="register"
+          v-if="!registerHidden"
+        >
+          <input
+            type="email"
+            placeholder="Email address"
+            v-model="register_form.email"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            v-model="register_form.password"
+          />
+          <input type="submit" value="Register" />
+        </form>
+      </section> -->
+    </section>
+  </main>
+</template>
+
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
+
 export default {
   data() {
     return {
-      modal: "modal",
-      signedIn: false,
+      // loginHidden: false,
+      // registerHidden: true,
+    };
+  },
+  setup() {
+    const login_form = ref({});
+    const register_form = ref({});
+    const store = useStore();
+
+    const login = () => {
+      store.dispatch("login", login_form.value);
+    };
+
+    const register = () => {
+      store.dispatch("register", register_form.value);
+    };
+
+    return {
+      login_form,
+      register_form,
+      login,
+      register,
     };
   },
   methods: {
     closeModal() {
-      this.modal = "modal hidden";
+      if (this.$store.state.clickSignIn === true) {
+        this.$store.state.clickSignIn = false;
+      }
     },
-    openModal() {
-      this.modal = "modal";
-    },
-    signIn() {
-      this.signedIn = true;
-    },
+    // formReset() {
+    //   document.getElementsByClassName("forms").reset();
+    //   document.getElementsByClassName("forms").value = "";
+    // },
+    // toggleRegister() {
+    //   if (this.loginHidden === false) {
+    //     this.loginHidden = true;
+    //     this.registerHidden = false;
+    //   }
+    // },
+    // toggleLogin() {
+    //   if (this.registerHidden === false) {
+    //     this.loginHidden = false;
+    //     this.registerHidden = true;
+    //   }
+    // },
   },
 };
 </script>
 
-<template>
-  <div :class="modal">
-    <button @click="closeModal" class="btn--close-modal">&times;</button>
-    <h2 class="modal__header">Sign in to view our content</h2>
-    <form class="modal__form">
-      <input type="email" name="email" placeholder="Email Address" required />
-      <input type="text" name="message" placeholder="Password" required />
-      <button type="submit" class="button-submit" @click="signIn">
-        Sign In
-      </button>
-    </form>
-  </div>
-</template>
+<style>
+h2 {
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
 
-<style scoped>
-/* MODAL WINDOW */
-.modal {
+/* .register-header {
+  border-right: solid 2px grey;
+  border-bottom: solid 2px grey;
+  padding: 0.5rem;
+} */
+
+.forms {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 30%;
+  left: 82.5%;
   transform: translate(-50%, -50%);
   max-width: fit-content;
-  max-height: 60rem;
+  max-height: 20rem;
   background-color: #f3f3f3;
-
   opacity: 95%;
-  padding: 5rem 6rem;
+  padding: 1rem 3rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
   z-index: 1000;
   transition: all 0.5s;
   border-radius: 20px;
+}
+
+input {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  display: block;
+  width: fit-content;
+  max-width: 400px;
+  margin-top: 15px;
+  font-size: 1rem;
+  margin-bottom: 0rem;
+  padding: 10px 10px;
+}
+
+input:not([type="submit"]) {
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+input:focus:not([type="submit"]) {
+  opacity: 1;
+}
+
+input::placeholder {
+  color: inherit;
+  padding-left: 10px;
+  opacity: 50%;
+}
+
+form.login input:not([type="submit"]),
+form.register input:not([type="submit"]) {
+  color: #2c3e50;
+  border: 2px solid #2c3e50;
+  border-radius: 8px;
+}
+
+form.login input[type="submit"],
+form.register input[type="submit"] {
+  background-color: rgb(15, 40, 109);
+  color: #fff;
+  font-weight: 100;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn--close-modal {
+  font-family: inherit;
+  color: rgb(82, 82, 82);
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.btn--close-modal:active {
+  text-shadow: 2px 2px 20px grey;
+}
+
+.hidden {
+  opacity: 0%;
+  visibility: none;
 }
 
 .overlay {
@@ -63,87 +211,5 @@ export default {
   backdrop-filter: blur(4px);
   z-index: 100;
   transition: all 0.5s;
-}
-
-.modal__header {
-  font-size: 40px;
-  /* margin-bottom: 4.5rem; */
-  line-height: 1.5;
-  color: #1c1d25;
-  text-align: center;
-  text-decoration: none;
-  margin-bottom: 2rem;
-}
-
-.modal__form {
-  margin: 0 3rem;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.modal__form label {
-  font-size: 1.7rem;
-  font-weight: 500;
-}
-
-.modal__form input {
-  font-size: 30px;
-  padding: 1rem 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-}
-
-.modal__form button {
-  grid-column: 1 / span 2;
-  justify-self: center;
-  margin-top: 1rem;
-}
-
-.btn--close-modal {
-  font-family: inherit;
-  color: rgb(82, 82, 82);
-  position: absolute;
-  top: 0.5rem;
-  right: 2rem;
-  font-size: 60px;
-  cursor: pointer;
-  border: none;
-  background: none;
-}
-
-.btn--close-modal:active {
-  text-shadow: 2px 2px 20px grey;
-}
-
-.hidden {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.button-submit {
-  width: 100px;
-  height: 55px;
-  background-color: rgb(227, 229, 245);
-  border-radius: 20px;
-  text-align: center;
-  font-weight: 100;
-  font-size: 20px;
-  padding-top: 5px;
-  margin-top: 20px;
-}
-
-.button-submit:hover {
-  background-color: azure;
-  color: #808080;
-  cursor: pointer;
-}
-
-.button-submit:active {
-  background-color: azure;
-  color: #808080;
-  cursor: pointer;
-  box-shadow: 5px 5px 20px rgb(59, 59, 59);
 }
 </style>
