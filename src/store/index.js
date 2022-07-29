@@ -11,7 +11,7 @@ export default createStore({
   // ----------------User Auth and Registration functions-----------------------------//
   state: {
     user: null,
-    clickSignIn: true,
+    clickSignIn: false,
   },
   mutations: {
     SET_USER(state, user) {

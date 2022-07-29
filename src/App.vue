@@ -1,10 +1,3 @@
-<template>
-  <div class="app-header">
-    <the-nav-bar></the-nav-bar>
-  </div>
-  <RouterView />
-</template>
-
 <script>
 import { RouterLink } from "vue-router";
 import TheNavBar from "../src/components/navigation/TheNavBar.vue";
@@ -15,6 +8,13 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div class="app-header">
+    <the-nav-bar></the-nav-bar>
+  </div>
+  <RouterView />
+</template>
 
 <style>
 .app-header {
@@ -27,7 +27,7 @@ export default {
   height: 80vh;
   margin-top: -3%;
   margin-left: -6.5%;
-  background: url("../src/assets/family-home.JPG") no-repeat center center fixed;
+  background: url("../src/assets/family-home.JPG") no-repeat center center fixed !important;
   border-radius: 15px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
