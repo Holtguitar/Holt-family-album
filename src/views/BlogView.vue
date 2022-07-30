@@ -1,16 +1,15 @@
 <script>
-import BlogTemplate from "../components/blog/BlogTemplate.vue";
-
+import BlogCreator from "../components/blog/builder/BlogCreator.vue";
+import BlogSelector from "../components/blog/builder/BlogSelector.vue";
 export default {
   components: {
-    BlogTemplate,
+    BlogCreator,
+    BlogSelector,
   },
 };
 </script>
 
 <template>
-  <section>
-    <div>Blog Page</div>
-    <blog-template></blog-template>
-  </section>
+  <blog-creator> </blog-creator>
+  <blog-selector></blog-selector>
 </template>

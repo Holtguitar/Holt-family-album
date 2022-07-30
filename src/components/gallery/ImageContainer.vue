@@ -1,25 +1,50 @@
 <template>
-  <div>
-    <img :src="image" />
+  <div class="hero-section">
+    <div class="row">
+      <div class="container" @click="input.click">
+        <img src="../../assets/public/family/IMG_5101.JPG" alt="image" />
+      </div>
+      <button @click="getPaths">Get Paths</button>
+    </div>
   </div>
 </template>
+
 <script>
 export default {
-  mounted: function () {
-    if (this.source) {
-      //is it empty
-      this.image = this.source; //replace placeholder
-    }
-    this.loading = false;
-  },
+  components: {},
   data() {
     return {
-      image: somePlaceholderImage, //url for placeholder image
-      loading: true,
+      imageSRC: import.meta.glob("../../assets/public/family/"),
+      folder: "../../assets/public/family",
     };
   },
-  props: ["source"],
+  methods: {
+    getImagePaths() {},
+    getPaths() {
+      for (files in this.folder) {
+        console.log(files);
+      }
+    },
+  },
 };
 </script>
 
-<style></style>
+<style scoped>
+.row {
+  display: flex;
+}
+
+.container {
+  width: 20%;
+  position: relative;
+  transition: tramsform 900ms;
+  display: block;
+}
+
+.container img {
+  width: 100%;
+  opacity: 1;
+  height: auto;
+  display: block;
+}
+</style>
