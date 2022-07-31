@@ -6,26 +6,24 @@
       </button>
       <h2>New Blog</h2>
       <form @submit.prevent="submitSurvey">
-        <div class="form-control">
-          <label for="name">Date: </label>
-          <input type="date" id="date" name="date" v-model="date" />
-        </div>
-
-        <div class="form-control">
-          <label for="name">Blog Title</label>
+        <div class="form-control-title">
           <input
             type="text"
             id="blog-title"
             name="blog-title"
             v-model.trim="blogTitle"
+            placeholder="Blog Title"
+            maxlength="35"
           />
         </div>
-        <div class="form-control">
+        <div class="form-control-body">
           <input
             type="text"
             id="blog-body"
             name="blog-body"
             v-model="blogBody"
+            placeholder="Blog Body"
+            spellcheck="true"
           />
         </div>
         <p v-if="invalidInput">
@@ -75,7 +73,12 @@ export default {
         },
         body: JSON.stringify({
           title: this.blogTitle,
-          date: this.date,
+          date: new Date().toLocaleDateString("en-us", {
+            weekday: "long",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          }),
           body: this.blogBody,
         }),
       })
@@ -100,14 +103,18 @@ export default {
 </script>
 
 <style scoped>
-.form-control {
-  margin: 0.5rem 0;
+.blog-body {
+  width: fit-content;
+}
+
+.form-control-body {
 }
 
 input[type="text"] {
   display: block;
   width: 20rem;
   margin-top: 0.5rem;
+  background-color: rgb(223, 221, 221);
 }
 
 .btn--close-modal {

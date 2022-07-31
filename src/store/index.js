@@ -12,6 +12,7 @@ export default createStore({
   state: {
     user: null,
     clickSignIn: false,
+    showFullBlog: false,
   },
   mutations: {
     SET_USER(state, user) {

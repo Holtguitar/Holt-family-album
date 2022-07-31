@@ -7,7 +7,7 @@
     <p>
       <br />
       <span class="body">{{ body.slice(0, 175) }}</span>
-      <span class="body-last">{{ body.slice(175, 265) }}</span>
+      <span class="body-last">{{ body.slice(175, 302) }}</span>
     </p>
     <br />
     <div class="read-more">Read More</div>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ['title', 'date', 'body'],
+  props: ["title", "date", "body"],
 };
 </script>
 
@@ -34,7 +34,7 @@ h1 {
 
 .date {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 .read-more {
