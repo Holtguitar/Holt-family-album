@@ -27,7 +27,7 @@ export default {
         <RouterLink class="header-nav" to="/blog">Blog</RouterLink>
       </li>
       <li class="sign-button">
-        <RouterLink
+        <!-- <RouterLink
           class="header-nav"
           to="/"
           v-if="!$store.state.user"
@@ -41,7 +41,21 @@ export default {
           v-if="$store.state.user"
           @click="$store.dispatch('logout')"
           >Sign Out</RouterLink
+        > -->
+        <div
+          class="header-nav-signin"
+          v-if="!$store.state.user"
+          @click="toggleClickSignIn"
         >
+          Sign In
+        </div>
+        <div
+          class="header-nav-signout"
+          v-if="$store.state.user"
+          @click="$store.dispatch('logout')"
+        >
+          Sign Out
+        </div>
       </li>
     </ul>
   </div>
@@ -80,6 +94,25 @@ li {
   font-size: 23px;
   font-weight: 600;
   text-decoration: none;
+  margin-top: 2%;
+}
+
+.header-nav-signin,
+.header-nav-signout {
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 2px rgb(118, 119, 121);
+  font-family: "Noto Serif", serif;
+  font-size: 23px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 2%;
+  margin-top: 0%;
+  margin-left: 0;
+}
+
+.header-nav-signin:hover,
+.header-nav-signout:hover {
+  cursor: pointer;
 }
 
 /* @media only screen and (max-width: 1500px) {

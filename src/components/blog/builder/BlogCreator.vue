@@ -52,6 +52,7 @@ export default {
       blogTitle: "",
       date: null,
       blogBody: "",
+      blogKey: "testKey",
       invalidInput: false,
       error: null,
     };
@@ -80,11 +81,11 @@ export default {
             day: "numeric",
           }),
           body: this.blogBody,
+          key: this.blogKey,
         }),
       })
         .then((res) => {
           if (res.ok) {
-            console.log(this.date);
           } else {
             throw new Error("Could not save your survey response.");
           }
@@ -94,9 +95,12 @@ export default {
           this.error = error.message;
         });
 
-      this.blogTitle = "";
-      this.date = null;
-      this.blogBody = "";
+      // this.blogTitle = "";
+      // this.date = null;
+      // this.blogBody = "";
+      // this.blogID = "";
+      console.log("title: ", this.blogTitle);
+      console.log("key: ", this.blogKey);
     },
   },
 };

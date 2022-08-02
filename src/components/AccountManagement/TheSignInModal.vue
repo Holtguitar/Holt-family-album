@@ -20,28 +20,6 @@
           <input type="submit" value="Login" />
         </form>
       </section>
-      <!-- <section>
-        <h2 class="register-header" @click.prevent="toggleRegister">
-          Register
-        </h2>
-        <form
-          class="register"
-          @submit.prevent="register"
-          v-if="!registerHidden"
-        >
-          <input
-            type="email"
-            placeholder="Email address"
-            v-model="register_form.email"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            v-model="register_form.password"
-          />
-          <input type="submit" value="Register" />
-        </form>
-      </section> -->
     </section>
   </main>
 </template>
@@ -51,12 +29,6 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 
 export default {
-  data() {
-    return {
-      // loginHidden: false,
-      // registerHidden: true,
-    };
-  },
   setup() {
     const login_form = ref({});
     const register_form = ref({});
@@ -67,19 +39,12 @@ export default {
 
       setTimeout(function () {
         login_form.value = "";
-        // Need to make sign in modal close...
       }, 800);
     };
 
-    // const register = () => {
-    //   store.dispatch("register", register_form.value);
-    // };
-
     return {
       login_form,
-      // register_form,
       login,
-      // register,
     };
   },
   methods: {
@@ -88,22 +53,6 @@ export default {
         this.$store.state.clickSignIn = false;
       }
     },
-    // formReset() {
-    //   document.getElementsByClassName("forms").reset();
-    //   document.getElementsByClassName("forms").value = "";
-    // },
-    // toggleRegister() {
-    //   if (this.loginHidden === false) {
-    //     this.loginHidden = true;
-    //     this.registerHidden = false;
-    //   }
-    // },
-    // toggleLogin() {
-    //   if (this.registerHidden === false) {
-    //     this.loginHidden = false;
-    //     this.registerHidden = true;
-    //   }
-    // },
   },
 };
 </script>
@@ -115,12 +64,6 @@ h2 {
   font-size: 1.5rem;
   margin-top: 1rem;
 }
-
-/* .register-header {
-  border-right: solid 2px grey;
-  border-bottom: solid 2px grey;
-  padding: 0.5rem;
-} */
 
 .forms {
   position: fixed;

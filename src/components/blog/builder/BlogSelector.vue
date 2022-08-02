@@ -1,5 +1,5 @@
 <template>
-  <section @submit.prevent="loadExperiences">
+  <section @submit.prevent="loadBlogPreviews">
     <base-card>
       <h2>Catch up on our journey!</h2>
       <p v-if="isLoading">Loading results. . .</p>
@@ -10,10 +10,11 @@
       <ul v-else>
         <blog-preview-card
           v-for="result in results"
-          :key="result.id"
+          :key="result.key"
           :title="result.title"
           :date="result.date"
           :body="result.body"
+          @click="togglePreview"
         ></blog-preview-card>
       </ul>
     </base-card>
@@ -34,14 +35,17 @@ export default {
   data() {
     return {
       results: [],
+      selectedBlog: [],
       isLoading: false,
       error: null,
-      imageURL:
-        "gs://holt-gallery.appspot.com/Holt-Family-Gallery/Adventures.json",
+      preview: true,
     };
   },
   methods: {
-    loadExperiences() {
+    togglePreview(event) {
+      console.log(event.target);
+    },
+    loadBlogPreviews() {
       this.isLoading = true;
       this.error = null;
       fetch("https://holt-gallery-default-rtdb.firebaseio.com/blogs.json")
@@ -55,13 +59,15 @@ export default {
           const results = [];
           for (const id in data) {
             results.push({
-              id: id,
+              key: id,
               title: data[id].title,
               date: data[id].date,
               body: data[id].body,
             });
           }
           this.results = results.reverse();
+
+          console.log(results[0]);
         })
         .catch((error) => {
           this.isLoading = false;
@@ -71,7 +77,7 @@ export default {
     },
   },
   mounted() {
-    this.loadExperiences();
+    this.loadBlogPreviews();
   },
 };
 </script>
