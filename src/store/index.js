@@ -101,7 +101,4 @@ export default createStore({
       });
     },
   },
-
-  // ----------------Rendering and Uploading Images-----------------------------//
-  // ToDo
 });

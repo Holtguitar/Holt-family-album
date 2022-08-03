@@ -32,4 +32,20 @@ const auth = getAuth(app);
 
 const realdb = getDatabase();
 
-export { auth };
+export {
+  auth,
+  realdb,
+  getDatabase,
+  ref,
+  set,
+  child,
+  get,
+  update,
+  remove,
+  getStorage,
+  sRef,
+  uploadBytesResumable,
+  getDownloadURL,
+  initializeApp,
+  firebaseConfig,
+};

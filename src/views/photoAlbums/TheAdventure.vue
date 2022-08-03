@@ -1,11 +1,8 @@
 <script>
 import { RouterLink } from "vue-router";
-import PhotoView from "./PhotoView.vue";
 
 export default {
-  components: {
-    PhotoView,
-  },
+  components: {},
 };
 </script>
 
@@ -14,7 +11,6 @@ export default {
     <RouterLink to="/photo-albums/">&#x3c; &#x3c; Back</RouterLink>
   </li>
   <page-title>Our Adventures</page-title>
-  <photo-view></photo-view>
 </template>
 
 <style scoped>

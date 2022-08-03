@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+</head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=width-device, initial-scale=1.0">
+<title>Test Firebase Image Loader</title>
+<style>
+    img {
+        height: 200px;
+        width: 200px;
+        border: 2px black solid
+    }
+</style>
+</head>
+<body id="body">
+    <label>Image Name</label>
+    <input type="text" id="namebox" />
+    <label id="extlab"></label>
+    <br>
+    <br>
+    <img  id="myimg"/>
+    <label id="upprogress"></label>
+    <br>
+    <br>
+    <button id="selbtn">Select Image</button>
+    <button id="upbtn">Upload</button>
+    <button id="downbtn">Download</button>
+    <button id="loadImages">Load Images</button>
+
+
+   
+</body>
+
+<script type="module">
+
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyCf1drJl6oMsExFTT9FUf0cJHYzMmXVpdQ",
+      authDomain: "holt-gallery.firebaseapp.com",
+      databaseURL: "https://holt-gallery-default-rtdb.firebaseio.com/",
+      projectId: "holt-gallery",
+      storageBucket: "holt-gallery.appspot.com",
+      messagingSenderId: "68891870749",
+      appId: "1:68891870749:web:68bdc3fe761dc2cefc68f4"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-storage.js"
+
+    // Firebase Realtime
+    import {getDatabase, ref, set, child, get, update, remove } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js"
+
+    const realdb = getDatabase();
+
+    // Variables and refs -----------------------------------------------------
+ 
+    let files = [];
+    let reader = new FileReader();
+
+    const namebox = document.getElementById('namebox')
+    const extlab = document.getElementById('extlab')
+    const myimg = document.getElementById('myimg')
+    const proglab = document.getElementById('upprogress')
+    const SelBtn = document.getElementById('selbtn')
+    const upBtn = document.getElementById('upbtn')
+    const downBtn = document.getElementById('downbtn')
+    const loadImagesBtn = document.getElementById('loadImages')
+    const image0 = document.getElementsByClassName('image-0')
+    let image0SRC = '';
+
+    const input = document.createElement('input')
+    input.type = 'file'
+
+
+    input.onchange = e => {
+        files = e.target.files;
+
+        var extension = GetFileName(files[0])
+        var name = GetFileName(files[0])
+
+        namebox.value = name
+        extlab.innerHTML = extension
+
+        reader.readAsDataURL(files[0])
+        console.log(files);
+    }
+
+    reader.onload = function () {
+        myimg.src = reader.result
+        
+    }
+
+    // Selections -----------------------------
+   SelBtn.onclick = function() {
+       input.click()
+   } 
+
+   const GetFileName = (file) => {
+       var temp = file.name.split('.')
+       var fname = temp.slice(0, -1).join('.')
+       return fname
+   }
+
+   const GetFileExt = (file) => {
+    var temp = file.name.split('.')
+       var ext = temp.slice((temp.length - 1),(temp.length))
+       return '.' + ext[0]
+   }
+
+
+   // Upload image and URLS process-------------------------------------------
+   async function UploadProcess() {
+       var ImgToUpload = files[0]
+
+       var ImgName = namebox.value + extlab.innerHTML
+
+       if(!validateName) {
+           alert("Image name contains invalid characters: . # $ [ ]")
+           return
+       }
+
+       const metaData = {
+           contentType: ImgToUpload.type,
+           downloadSource: this.downloadURL
+       }
+
+       const storage = getStorage();
+
+       const storageRef = sRef(storage, "Images/" + ImgName)
+
+       const UploadTask = uploadBytesResumable(storageRef, ImgToUpload, metaData)
+
+       UploadTask.on('state-change', (snapshot) => {
+           const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+           proglab.innerHTML = "Upload Progress: " + progress + "%"
+       }, (error) => {
+           alert("Image not uploaded!")
+       }, 
+       () => {
+           getDownloadURL(UploadTask.snapshot.ref).then((downloadURL) => {
+            fetch("https://holt-gallery-default-rtdb.firebaseio.com/images/adventures.json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          URL: downloadURL
+        }),
+      })
+        .then((res) => {
+          if (res.ok) {
+          } else {
+            throw new Error("Could not save your URL.");
+          }
+        })
+        .catch((error) => {
+          console.error(`Custom Error: ${error}`);
+          this.error = error.message;
+        });
+           })
+       })
+   }
+
+
+   // Realtime DataBase functions -------------------------------------------
+   const SaveURLtoRealtimeDB = (URL) => {
+        var name = namebox.value
+        var ext = extlab.innerHTML
+
+        set(ref(realdb, "Images/" + name), {
+         ImgName: (name + ext),
+         ImgURL: URL
+     })
+   }
+
+   async function GetURLFromRealtimeDB() {
+        var name = namebox.value
+        var dbRef = ref(realdb)
+
+        get(child(dbRef, "Images/" + name)).then((snapshot) => {
+            if(snapshot.exists()){
+                myimg.src = snapshot.val().ImgURL
+            }
+        })
+   }
+
+   const validateName = () => {
+       var regex = /[\.#$\[\]]/
+       return !(regex.test(namebox.value))
+   }
+
+   const click = () => {
+       console.log("click");
+   }
+
+   upBtn.onclick = UploadProcess;
+   downBtn.onclick = GetURLFromRealtimeDB;
+  
+
+
+   //------------Display Images---------------------------------
+   let imageResults = [];
+
+const loadImagePreviews = () => {
+
+  fetch("https://holt-gallery-default-rtdb.firebaseio.com/images/adventures.json")
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then((data) => {
+      const results = [];
+      for (const id in data) {
+        results.push({
+          key: id,
+          URL: data[id].URL,
+        });
+      }
+      const createImage = () => {
+        let url = '';
+        const objValues = Object.values(results[1])
+        url = objValues[1]
+
+        const img = document.createElement('img')
+        img.src = url
+        document.getElementById('body').appendChild(img);
+      }
+      
+      createImage();
+      
+    })
+    .catch((error) => {
+      
+      console.error(`Custom Error: ${error}`);
+    });
+
+    
+};
+   
+loadImagesBtn.onclick = loadImagePreviews;
+  </script>
+
+
+</html>

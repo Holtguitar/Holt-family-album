@@ -67,7 +67,7 @@ export default {
           }
           this.results = results.reverse();
 
-          console.log(results[0]);
+          // console.log(results[0]);
         })
         .catch((error) => {
           this.isLoading = false;
