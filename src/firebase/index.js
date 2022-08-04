@@ -29,7 +29,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
-
 const realdb = getDatabase();
 
 export {

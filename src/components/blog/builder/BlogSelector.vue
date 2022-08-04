@@ -9,7 +9,7 @@
       </p>
       <ul v-else>
         <blog-preview-card
-          v-for="result in results"
+          v-for="result in results.slice(firstIndex, lastIndex)"
           :key="result.key"
           :title="result.title"
           :date="result.date"
@@ -18,6 +18,27 @@
         ></blog-preview-card>
       </ul>
     </base-card>
+    <section class="blog-nav">
+      <div>
+        <img
+          class="arrow"
+          @click="decrease"
+          src="../../../assets/public/icons/left-arrow.png"
+          v-if="!firstPage"
+        />
+      </div>
+      <page-number class="current-number" v-model="currentNumber">{{
+        currentNumber
+      }}</page-number>
+      <div>
+        <img
+          class="arrow"
+          @click="increase"
+          src="../../../assets/public/icons/right-arrow.png"
+          v-if="!lastPage"
+        />
+      </div>
+    </section>
   </section>
 </template>
 
@@ -35,15 +56,43 @@ export default {
   data() {
     return {
       results: [],
-      selectedBlog: [],
       isLoading: false,
       error: null,
       preview: true,
+      currentNumber: 1,
+      firstIndex: 0,
+      lastIndex: 4,
+      lastPage: false,
+      firstPage: true,
     };
   },
   methods: {
+    incrementIndex() {
+      if (this.currentNumber >= Math.floor(this.results.length / 5)) {
+        this.lastPage = true;
+      } else {
+        this.lastPage = false;
+      }
+      if (this.currentNumber === 1) {
+        this.firstPage = true;
+        this.firstIndex = 0;
+        this.lastIndex = 4;
+      } else {
+        this.firstPage = false;
+        this.firstIndex = (this.currentNumber - 1) * 5;
+        this.lastIndex = this.firstIndex + 4;
+      }
+    },
+    increase() {
+      this.currentNumber++;
+      this.incrementIndex();
+    },
+    decrease() {
+      this.currentNumber--;
+      this.incrementIndex();
+    },
     togglePreview(event) {
-      console.log(event.target);
+      console.log(this.results[0]);
     },
     loadBlogPreviews() {
       this.isLoading = true;
@@ -65,9 +114,8 @@ export default {
               body: data[id].body,
             });
           }
-          this.results = results.reverse();
 
-          // console.log(results[0]);
+          this.results = results.reverse();
         })
         .catch((error) => {
           this.isLoading = false;
@@ -86,11 +134,29 @@ export default {
 h2 {
   margin-left: 20%;
 }
+
 ul {
   list-style: none;
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
+}
+
+.blog-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.arrow {
+  height: 1.5rem;
+  margin-left: 45px;
+  margin-right: 45px;
+}
+
+.arrow:hover {
+  cursor: pointer;
 }
 </style>

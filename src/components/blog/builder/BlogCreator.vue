@@ -52,7 +52,6 @@ export default {
       blogTitle: "",
       date: null,
       blogBody: "",
-      blogKey: "testKey",
       invalidInput: false,
       error: null,
     };
@@ -81,7 +80,6 @@ export default {
             day: "numeric",
           }),
           body: this.blogBody,
-          key: this.blogKey,
         }),
       })
         .then((res) => {
@@ -100,7 +98,6 @@ export default {
       // this.blogBody = "";
       // this.blogID = "";
       console.log("title: ", this.blogTitle);
-      console.log("key: ", this.blogKey);
     },
   },
 };
