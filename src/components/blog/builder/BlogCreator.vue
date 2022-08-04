@@ -1,6 +1,6 @@
 <template>
   <section>
-    <base-card>
+    <base-card class="blog-builder">
       <button @click.prevent="closeModal" class="btn--close-modal">
         &times;
       </button>
@@ -93,22 +93,20 @@ export default {
           this.error = error.message;
         });
 
-      // this.blogTitle = "";
-      // this.date = null;
-      // this.blogBody = "";
-      // this.blogID = "";
-      console.log("title: ", this.blogTitle);
+      this.blogTitle = "";
+      this.date = null;
+      this.blogBody = "";
+      this.blogID = "";
     },
   },
 };
 </script>
 
 <style scoped>
-.blog-body {
-  width: fit-content;
-}
-
-.form-control-body {
+.blog-builder {
+  background-color: rgb(250, 251, 252);
+  border: double;
+  border-radius: 10px;
 }
 
 input[type="text"] {

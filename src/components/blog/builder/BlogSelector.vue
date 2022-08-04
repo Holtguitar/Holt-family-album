@@ -1,4 +1,5 @@
 <template>
+  <blog-creator></blog-creator>
   <section @submit.prevent="loadBlogPreviews">
     <base-card>
       <h2>Catch up on our journey!</h2>
@@ -14,36 +15,22 @@
           :title="result.title"
           :date="result.date"
           :body="result.body"
-          @click="togglePreview"
         ></blog-preview-card>
       </ul>
     </base-card>
     <section class="blog-nav">
-      <div>
-        <img
-          class="arrow"
-          @click="decrease"
-          src="../../../assets/public/icons/left-arrow.png"
-          v-if="!firstPage"
-        />
-      </div>
+      <div class="arrow" @click="decrease" v-if="!firstPage">&#x3c;</div>
       <page-number class="current-number" v-model="currentNumber">{{
         currentNumber
       }}</page-number>
-      <div>
-        <img
-          class="arrow"
-          @click="increase"
-          src="../../../assets/public/icons/right-arrow.png"
-          v-if="!lastPage"
-        />
-      </div>
+      <div class="arrow" @click="increase" v-if="!lastPage">></div>
     </section>
   </section>
 </template>
 
 <script>
 import BlogPreviewCard from "./BlogPreviewCard.vue";
+import BlogCreator from "./BlogCreator.vue";
 import BaseCard from "../UI/BaseCard.vue";
 import BaseButton from "../UI/BaseButton.vue";
 
@@ -52,6 +39,7 @@ export default {
     BlogPreviewCard,
     BaseCard,
     BaseButton,
+    BlogCreator,
   },
   data() {
     return {
@@ -75,6 +63,7 @@ export default {
       }
       if (this.currentNumber === 1) {
         this.firstPage = true;
+
         this.firstIndex = 0;
         this.lastIndex = 4;
       } else {
@@ -90,9 +79,6 @@ export default {
     decrease() {
       this.currentNumber--;
       this.incrementIndex();
-    },
-    togglePreview(event) {
-      console.log(this.results[0]);
     },
     loadBlogPreviews() {
       this.isLoading = true;
@@ -144,16 +130,11 @@ ul {
 }
 
 .blog-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 30px;
-}
-
-.arrow {
-  height: 1.5rem;
-  margin-left: 45px;
-  margin-right: 45px;
+  display: flex;
+  align-items: center;
+  margin: 15px;
+  left: 40%;
 }
 
 .arrow:hover {
