@@ -24,7 +24,7 @@ export default {
         <RouterLink class="header-nav" to="/photo-albums">Albums</RouterLink>
       </li>
       <li>
-        <RouterLink class="header-nav" to="/blog">Blog</RouterLink>
+        <RouterLink class="header-nav" to="/blog">Blogs</RouterLink>
       </li>
       <li class="sign-button">
         <!-- <RouterLink

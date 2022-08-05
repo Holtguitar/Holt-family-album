@@ -29,6 +29,7 @@
         <div class="title">{{ title }} {{ key }}</div>
         <div class="date">{{ date }}</div>
       </h1>
+      <hr />
       <p>
         <br />
         <span class="body">{{ body }}</span>
@@ -97,7 +98,7 @@ export default {
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 2px 2px 2px 2px grey;
-  background-color: aliceblue;
+  background-color: rgb(255, 255, 255);
 }
 
 .preview p {
@@ -130,12 +131,14 @@ export default {
   /* min-height: 95vh;
   max-height: fit-content; */
   padding: 2rem 6rem;
-  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+  box-shadow: 10rem 10rem 10rem 100rem rgba(39, 39, 39, 0.3);
   z-index: 1000;
   transition: all 0.5s;
   border-radius: 10px;
-  border: double;
-  background-color: aliceblue;
+  border-top: solid 20px rgb(252, 252, 252);
+  /* border-left: solid 20px rgb(252, 252, 252); */
+  border-bottom: solid 20px rgb(252, 252, 252);
+  background-color: rgb(252, 252, 252);
   overflow-y: scroll;
   max-height: 85vh;
   min-height: 85vh;
@@ -203,14 +206,14 @@ export default {
 .btn--close-modal {
   font-family: inherit;
   color: rgb(82, 82, 82);
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
+  position: sticky;
+  top: 0%;
+  margin-left: 100%;
+  /* top: 0.5rem; */
   font-size: 20px;
   cursor: pointer;
   border: none;
   background: none;
-  margin: 10px;
 }
 
 .btn--close-modal:active {

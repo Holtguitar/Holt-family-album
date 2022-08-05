@@ -9,6 +9,6 @@ div {
   margin: 2rem auto;
   max-width: 40rem;
   padding: 1rem;
-  background-color: rgb(244, 244, 245);
+  background-color: (235, 232, 232);
 }
 </style>

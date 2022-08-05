@@ -2,7 +2,7 @@
   <blog-creator></blog-creator>
   <section @submit.prevent="loadBlogPreviews">
     <base-card>
-      <h2>Catch up on our journey!</h2>
+      <h2>Read up on our journey!</h2>
       <p v-if="isLoading">Loading results. . .</p>
       <p v-else-if="!isLoading && error">{{ error }}</p>
       <p v-else-if="!isLoading && (!results || results.length === 0)">
@@ -19,11 +19,21 @@
       </ul>
     </base-card>
     <section class="blog-nav">
-      <div class="arrow" @click="decrease" v-if="!firstPage">&#x3c;</div>
+      <img
+        class="arrow-left"
+        @click="decrease"
+        v-if="!firstPage"
+        src="../../../assets/public/icons/left-arrow.png"
+      />
       <page-number class="current-number" v-model="currentNumber">{{
         currentNumber
       }}</page-number>
-      <div class="arrow" @click="increase" v-if="!lastPage">></div>
+      <img
+        class="arrow-right"
+        @click="increase"
+        v-if="!lastPage"
+        src="../../../assets/public/icons/right-arrow.png"
+      />
     </section>
   </section>
 </template>
@@ -119,6 +129,7 @@ export default {
 <style scoped>
 h2 {
   margin-left: 20%;
+  text-decoration: underline;
 }
 
 ul {
@@ -134,10 +145,37 @@ ul {
   display: flex;
   align-items: center;
   margin: 15px;
-  left: 40%;
+  /* width: 40vw; */
+  left: 29%;
+  user-select: none;
 }
 
-.arrow:hover {
+.arrow-left:hover {
   cursor: pointer;
+}
+
+.arrow-right:hover {
+  cursor: pointer;
+}
+
+.current-number {
+  position: absolute;
+  left: 20%;
+}
+
+.arrow-left {
+  position: absolute;
+  left: 3%;
+  width: 30px;
+}
+
+.arrow-right {
+  position: absolute;
+  left: 35%;
+  width: 30px;
+}
+
+.arrow-icon {
+  width: 5%;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <section>
-    <image-uploader>
-      <!-- <button @click.prevent="closeModal" class="btn--close-modal">
+    <!-- <image-uploader> -->
+    <!-- <button @click.prevent="closeModal" class="btn--close-modal">
         &times;
       </button>
       <h2>New Photo</h2>
@@ -20,21 +20,21 @@
       >
       <base-button id="upbtn">Upload</base-button>
       <base-button id="downbtn">Download</base-button> -->
-      <div v-if="!image">
-        <h2>Select an image</h2>
-        <input type="file" @change="onFileChange" />
-      </div>
-      <div v-else>
-        <img :src="image" />
-        <base-button @click.prevent="removeImage">Remove image</base-button>
-        <base-button @click.prevent="UploadImage">Upload</base-button>
-      </div>
-    </image-uploader>
+    <div v-if="!image">
+      <h2>Select an image</h2>
+      <input type="file" @change="onFileChange" />
+    </div>
+    <div v-else>
+      <img :src="image" />
+      <base-button @click.prevent="removeImage">Remove image</base-button>
+      <base-button @click.prevent="UploadImage">Upload</base-button>
+    </div>
+    <!-- </image-uploader> -->
   </section>
 </template>
 
 <script>
-import ImageUploader from "./UI/ImageContainer.vue";
+// import ImageUploader from "./UI/Image.vue";
 import BaseButton from "../../blog/UI/BaseButton.vue";
 import {
   getStorage,
@@ -56,7 +56,7 @@ import {
 
 export default {
   components: {
-    ImageUploader,
+    // ImageUploader,
     BaseButton,
   },
   data() {

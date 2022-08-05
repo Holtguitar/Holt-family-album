@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="$store.state.user">
     <base-card class="blog-builder">
       <button @click.prevent="closeModal" class="btn--close-modal">
         &times;
@@ -104,7 +104,7 @@ export default {
 
 <style scoped>
 .blog-builder {
-  background-color: rgb(250, 251, 252);
+  background-color: rgb(255, 255, 255);
   border: double;
   border-radius: 10px;
 }

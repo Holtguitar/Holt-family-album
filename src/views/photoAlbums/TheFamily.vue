@@ -1,26 +1,26 @@
-<script>
-import { RouterLink } from "vue-router";
-import ImageUploader from "../../components/gallery/builder/ImageUploader.vue";
-
-export default {
-  components: {
-    ImageUploader,
-  },
-};
-</script>
-
 <template>
   <li>
     <RouterLink to="/photo-albums/">&#x3c; &#x3c; Back</RouterLink>
   </li>
   <page-title>Our Family</page-title>
-  <image-uploader></image-uploader>
+  <image-selector></image-selector>
 </template>
+
+<script>
+import { RouterLink } from "vue-router";
+import ImageSelector from "../../components/gallery/builder/ImageSelector.vue";
+
+export default {
+  components: {
+    ImageSelector,
+  },
+};
+</script>
 
 <style scoped>
 page-title {
-  left: 35%;
-  margin-bottom: 5rem;
+  left: 40%;
+  font-size: 3rem;
 }
 
 li {
