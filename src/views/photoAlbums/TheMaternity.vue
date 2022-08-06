@@ -18,8 +18,8 @@ export default {
 
 <style scoped>
 page-title {
-  left: 35%;
-  margin-bottom: 5rem;
+  left: 40%;
+  font-size: 3rem;
 }
 
 li {

@@ -1,8 +1,11 @@
 <script>
 import { RouterLink } from "vue-router";
+import JudahImageSelector from "../../../components/gallery/builder/maternity/judah/JudahImageSelector.vue";
 
 export default {
-  components: {},
+  components: {
+    JudahImageSelector,
+  },
 };
 </script>
 
@@ -11,12 +14,13 @@ export default {
     <RouterLink to="/photo-albums/maternity">&#x3c; &#x3c; Back</RouterLink>
   </li>
   <page-title>Maternity - Judah</page-title>
+  <judah-image-selector></judah-image-selector>
 </template>
 
 <style scoped>
 page-title {
-  left: 35%;
-  margin-bottom: 5rem;
+  left: 40%;
+  font-size: 3rem;
 }
 
 li {

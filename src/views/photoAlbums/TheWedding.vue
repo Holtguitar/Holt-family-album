@@ -1,8 +1,11 @@
 <script>
 import { RouterLink } from "vue-router";
+import WeddingImageSelector from "../../components/gallery/builder/wedding/WeddingImageSelector.vue";
 
 export default {
-  components: {},
+  components: {
+    WeddingImageSelector,
+  },
 };
 </script>
 
@@ -11,12 +14,13 @@ export default {
     <RouterLink to="/photo-albums/">&#x3c; &#x3c; Back</RouterLink>
   </li>
   <page-title>Our Wedding</page-title>
+  <wedding-image-selector></wedding-image-selector>
 </template>
 
 <style scoped>
 page-title {
-  left: 35%;
-  margin-bottom: 5rem;
+  left: 40%;
+  font-size: 3rem;
 }
 
 li {

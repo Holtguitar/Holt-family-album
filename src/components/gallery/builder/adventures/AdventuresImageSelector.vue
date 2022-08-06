@@ -1,5 +1,4 @@
 <template>
-  <!-- <image-uploader></image-uploader> -->
   <section
     class="gallery"
     style="
@@ -19,13 +18,11 @@
 </template>
 
 <script>
-import ImageUploader from "./ImageUploader.vue";
-import ImagePreviewCard from "./ImagePreviewCard.vue";
+import ImagePreviewCard from "./AdventuresImagePreviewCard.vue";
 
 export default {
   components: {
     ImagePreviewCard,
-    ImageUploader,
   },
   data() {
     return {
@@ -41,7 +38,7 @@ export default {
       this.isLoading = true;
       this.error = null;
       fetch(
-        "https://holt-gallery-default-rtdb.firebaseio.com/images/family.json"
+        "https://holt-gallery-default-rtdb.firebaseio.com/images/adventures.json"
       )
         .then((res) => {
           if (res.ok) {

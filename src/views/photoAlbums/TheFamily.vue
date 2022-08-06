@@ -3,16 +3,16 @@
     <RouterLink to="/photo-albums/">&#x3c; &#x3c; Back</RouterLink>
   </li>
   <page-title>Our Family</page-title>
-  <image-selector></image-selector>
+  <family-image-selector></family-image-selector>
 </template>
 
 <script>
 import { RouterLink } from "vue-router";
-import ImageSelector from "../../components/gallery/builder/ImageSelector.vue";
+import FamilyImageSelector from "../../components/gallery/builder/family/FamilyImageSelector.vue";
 
 export default {
   components: {
-    ImageSelector,
+    FamilyImageSelector,
   },
 };
 </script>

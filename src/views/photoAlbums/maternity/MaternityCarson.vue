@@ -1,22 +1,28 @@
 <script>
 import { RouterLink } from "vue-router";
+import CarsonImageSelector from "../../../components/gallery/builder/maternity/carson/CarsonImageSelector.vue";
 
 export default {
-  components: {},
+  components: {
+    CarsonImageSelector,
+  },
 };
 </script>
 
 <template>
   <li>
-    <RouterLink to="/photo-albums/maternity">&#x3c; &#x3c; Back</RouterLink>
+    <RouterLink CarsonImagePreviewCardk to="/photo-albums/maternity"
+      >&#x3c; &#x3c; Back</RouterLink
+    >
   </li>
   <page-title>Maternity - Carson</page-title>
+  <carson-image-selector></carson-image-selector>
 </template>
 
 <style scoped>
 page-title {
-  left: 35%;
-  margin-bottom: 5rem;
+  left: 40%;
+  font-size: 3rem;
 }
 
 li {

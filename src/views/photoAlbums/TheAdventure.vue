@@ -1,8 +1,11 @@
 <script>
 import { RouterLink } from "vue-router";
+import AdventuresImageSelector from "../../components/gallery/builder/adventures/AdventuresImageSelector.vue";
 
 export default {
-  components: {},
+  components: {
+    AdventuresImageSelector,
+  },
 };
 </script>
 
@@ -11,6 +14,7 @@ export default {
     <RouterLink to="/photo-albums/">&#x3c; &#x3c; Back</RouterLink>
   </li>
   <page-title>Our Adventures</page-title>
+  <adventures-image-selector></adventures-image-selector>
 </template>
 
 <style scoped>

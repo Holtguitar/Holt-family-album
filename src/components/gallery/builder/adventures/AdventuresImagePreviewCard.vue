@@ -1,8 +1,8 @@
 <template>
-  <section v-if="preview" class="preview" @click.prevent="previewToggle">
+  <section class="preview" @click.prevent="previewToggle">
     <img v-bind:src="url" />
   </section>
-  <section v-else class="fullview" @click.prevent="previewToggle">
+  <section v-if="preview" class="fullview" @click.prevent="previewToggle">
     <img v-bind:src="url" />
   </section>
 </template>
@@ -12,7 +12,7 @@ export default {
   props: ["url", "key"],
   data() {
     return {
-      preview: true,
+      preview: false,
     };
   },
   methods: {
@@ -37,6 +37,7 @@ export default {
   user-select: none;
   margin: 15px;
   object-fit: cover;
+  box-shadow: 5px 5px 5px rgba(8, 8, 8, 0.3);
 }
 
 /*   full-view Styling    */
