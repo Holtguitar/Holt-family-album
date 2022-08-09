@@ -1,47 +1,16 @@
-<script>
-import { RouterLink } from "vue-router";
-import TheSignInModal from "../AccountManagement/TheSignInModal.vue";
-
-export default {
-  components: {
-    TheSignInModal,
-  },
-  methods: {
-    toggleClickSignIn() {
-      this.$store.state.clickSignIn = !this.$store.state.clickSignIn;
-    },
-  },
-};
-</script>
-
 <template>
-  <div class="page-header">
+  <div class="page-header-full">
     <ul>
-      <li>
+      <li class="header-home">
         <RouterLink class="header-nav" to="/">Home</RouterLink>
       </li>
-      <li>
+      <li class="header-albums">
         <RouterLink class="header-nav" to="/photo-albums">Albums</RouterLink>
       </li>
-      <li>
+      <li class="header-blog">
         <RouterLink class="header-nav" to="/blog">Blogs</RouterLink>
       </li>
       <li class="sign-button">
-        <!-- <RouterLink
-          class="header-nav"
-          to="/"
-          v-if="!$store.state.user"
-          @click="toggleClickSignIn"
-        >
-          Sign In
-        </RouterLink>
-        <RouterLink
-          class="header-nav"
-          to="/"
-          v-if="$store.state.user"
-          @click="$store.dispatch('logout')"
-          >Sign Out</RouterLink
-        > -->
         <div
           class="header-nav-signin"
           v-if="!$store.state.user"
@@ -59,12 +28,83 @@ export default {
       </li>
     </ul>
   </div>
+  <div class="page-header-mobile">
+    <ul>
+      <li class="header-home-mobile">
+        <RouterLink class="header-nav" to="/"
+          ><img src="../../assets/public/icons/home.png"
+        /></RouterLink>
+      </li>
+      <li class="header-albums-mobile">
+        <RouterLink class="header-nav-mobile" to="/photo-albums"
+          ><img src="../../assets/public/icons/photos.png" class="home-icon"
+        /></RouterLink>
+      </li>
+      <li class="header-blog-mobile">
+        <RouterLink class="header-nav" to="/blog"
+          ><img src="../../assets/public/icons/blog.png"
+        /></RouterLink>
+      </li>
+      <li class="sign-button-mobile">
+        <div
+          class="header-nav-signin-mobile"
+          v-if="!$store.state.user"
+          @click="toggleClickSignIn"
+        >
+          <img src="../../assets/public/icons/login.png" />
+        </div>
+        <div
+          class="header-nav-signout-mobile"
+          v-if="$store.state.user"
+          @click="$store.dispatch('logout')"
+        >
+          <img src="../../assets/public/icons/logout.png" />
+        </div>
+      </li>
+    </ul>
+  </div>
   <br />
 
   <the-sign-in-modal></the-sign-in-modal>
 </template>
 
-<style>
+<script>
+import { RouterLink } from "vue-router";
+import TheSignInModal from "../AccountManagement/TheSignInModal.vue";
+
+export default {
+  components: {
+    TheSignInModal,
+  },
+  data() {
+    return {
+      // width: null,
+      // height: null,
+    };
+  },
+  // mounted() {
+  //   window.addEventListener("resize", this.onResize);
+  // },
+  // created() {
+  //   window.addEventListener("resize", this.onResize);
+  // },
+  // destroyed() {
+  //   window.removeEventListener("resize", this.onResize);
+  // },
+  methods: {
+    toggleClickSignIn() {
+      this.$store.state.clickSignIn = !this.$store.state.clickSignIn;
+    },
+    // onResize() {
+    //   this.width = window.innerWidth;
+    //   this.height = window.innerHeight;
+    //   console.log(this.width, this.height);
+    // },
+  },
+};
+</script>
+
+<style scoped>
 ul {
   display: flex;
   list-style-type: none;
@@ -73,7 +113,7 @@ ul {
   margin-right: 30px;
 }
 
-.page-header {
+.page-header-full {
   position: relative;
   justify-content: flex-end;
   display: flex;
@@ -81,6 +121,10 @@ ul {
   height: 80vh;
   margin-top: -3%;
   margin-left: -6.5%;
+}
+
+.page-header-mobile {
+  display: none;
 }
 
 li {
@@ -115,49 +159,27 @@ li {
   cursor: pointer;
 }
 
-/* @media only screen and (max-width: 1500px) {
-  .header-nav {
-    margin: 5px;
-    color: rgb(39, 76, 117);
-    text-shadow: 1px 1px 1px rgb(95, 145, 202);
-    font-family: "Noto Serif", serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: none;
+@media only screen and (max-width: 1000px) {
+  .page-header-full {
+    display: none;
   }
 
-  ul {
+  .page-header-mobile {
+    position: relative;
+    justify-content: flex-end;
     display: flex;
-
-    flex-direction: right;
-    right: 12%;
+    /* width: 100vw;
+    height: 80vh; */
+    margin-top: -3%;
+    margin-left: -6.5%;
   }
 
-  li {
-    list-style-type: none;
-    padding: 10px;
-  }
-} */
-
-/* @media only screen and (max-width: 800px) {
-  .header-nav {
-    margin: 5px;
-    color: rgb(39, 76, 117);
-    text-shadow: 1px 1px 1px rgb(95, 145, 202);
-    font-family: "Noto Serif", serif;
-    font-size: 13px;
-    font-weight: 200;
-    text-decoration: none;
+  img {
+    width: 70px;
   }
 
-  ul {
-    display: flex;
-    right: 16%;
+  .home-icon {
+    background-color: transparent;
   }
-
-  li {
-    list-style-type: none;
-    padding: 10px;
-  }
-} */
+}
 </style>
