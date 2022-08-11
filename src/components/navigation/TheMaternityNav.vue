@@ -14,7 +14,7 @@ import { RouterLink } from "vue-router";
       <RouterLink to="/photo-albums/maternity/carson">
         <div class="maternity-carson" id="image-container"></div>
       </RouterLink>
-      <RouterLink to="/photo-albums/maternity/carson">Carson</RouterLink>
+      <RouterLink to="/photo-albums/maternity/carson">New Baby</RouterLink>
     </div>
   </section>
 </template>

@@ -15,7 +15,7 @@ export default {
       >&#x3c; &#x3c; Back</RouterLink
     >
   </li>
-  <page-title>Maternity - Carson</page-title>
+  <page-title>Maternity - New Baby!</page-title>
   <carson-image-selector></carson-image-selector>
 </template>
 
