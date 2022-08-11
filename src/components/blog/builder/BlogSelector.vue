@@ -18,7 +18,7 @@
         ></blog-preview-card>
       </ul>
     </base-card>
-    <section class="blog-nav">
+    <section v-if="results.length" class="blog-nav">
       <img
         class="arrow-left"
         @click="decrease"
@@ -177,5 +177,37 @@ ul {
 
 .arrow-icon {
   width: 5%;
+}
+
+/*iPad air */
+@media only screen and (max-width: 900px) {
+  h2 {
+    font-size: 1.25rem;
+    margin: 0;
+    margin-top: 50px;
+    text-decoration: none;
+    left: 30%;
+  }
+}
+
+/*iPad/mini */
+@media only screen and (max-width: 800px) {
+  h2 {
+    font-size: 1.25rem;
+    margin: 0;
+    margin-top: 50px;
+    text-decoration: none;
+    left: 30%;
+  }
+}
+
+/*iPhone/Mobile */
+@media only screen and (max-width: 450px) {
+  h2 {
+    font-size: 1.25rem;
+    margin: 0;
+    margin-top: 50px;
+    left: 5%;
+  }
 }
 </style>

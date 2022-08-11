@@ -219,4 +219,46 @@ export default {
 .btn--close-modal:active {
   text-shadow: 2px 2px 20px grey;
 }
+
+/*iPad air */
+@media only screen and (max-width: 900px) {
+}
+
+/*iPad/mini */
+@media only screen and (max-width: 800px) {
+}
+
+/*iPhone/Mobile */
+@media only screen and (max-width: 450px) {
+  .preview h1 {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+
+  .preview .title {
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .preview .date {
+    font-weight: 200;
+    font-size: 10px;
+  }
+
+  .preview .read-more {
+    margin-left: 80%;
+    border: none;
+    background-color: transparent;
+  }
+
+  .preview li {
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 2px 2px 2px 2px grey;
+    background-color: rgb(255, 255, 255);
+  }
+}
 </style>

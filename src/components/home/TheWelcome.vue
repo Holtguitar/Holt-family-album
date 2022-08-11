@@ -7,9 +7,8 @@ import WelcomeItem from "./WelcomeItem.vue";
     <div class="welcome">
       <h1>We are the Holt family</h1>
       <br />
-      Our desire is to glorify <u>God</u> in all that we do. We invite
-      <u>you</u> explore our journey through photos and stories of our
-      experiences!
+      Our desire is to glorify God in all that we do. We invite you to explore
+      our journey through photos and stories of our experiences!
     </div>
   </WelcomeItem>
 </template>

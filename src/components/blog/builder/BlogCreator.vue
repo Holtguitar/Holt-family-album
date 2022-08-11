@@ -107,11 +107,15 @@ export default {
   background-color: rgb(255, 255, 255);
   border: double;
   border-radius: 10px;
+  margin-top: 4rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 input[type="text"] {
   display: block;
-  width: 20rem;
+  width: fit-content;
   margin-top: 0.5rem;
   background-color: rgb(223, 221, 221);
 }
@@ -130,5 +134,21 @@ input[type="text"] {
 
 .btn--close-modal:active {
   text-shadow: 2px 2px 20px grey;
+}
+
+/*iPad air */
+@media only screen and (max-width: 900px) {
+  .blog-builder {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/*iPad/mini */
+@media only screen and (max-width: 900px) {
+}
+
+/*iPhone/Mobile */
+@media only screen and (max-width: 450px) {
 }
 </style>

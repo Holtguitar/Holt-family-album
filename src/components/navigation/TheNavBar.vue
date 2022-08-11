@@ -162,12 +162,14 @@ li {
     display: flex;
     width: fit-content;
     height: 50px;
-    top: 90%;
+    top: 95%;
+    left: 20%;
+    /* background-color: rgb(103, 103, 163); */
   }
 
   img {
-    width: 30px;
-    margin: 5px;
+    width: 40px;
+    margin: 15px;
   }
 
   .header-albums-mobile {
@@ -217,7 +219,7 @@ li {
     width: 80vw;
     height: 50px;
     left: 5%;
-    top: 90%;
+    top: 95%;
     /* background-color: rgb(103, 103, 163); */
   }
 
