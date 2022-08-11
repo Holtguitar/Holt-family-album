@@ -4,11 +4,36 @@ import WelcomeItem from "./WelcomeItem.vue";
 
 <template>
   <WelcomeItem>
-    <h1>We are the Holt family.</h1>
-    Our desire is to glorify <u>God</u> in all that we do. We invite
-    <u>you</u> explore our journey through photos and stories of our
-    experiences!
+    <div class="welcome">
+      <h1>We are the Holt family</h1>
+      <br />
+      Our desire is to glorify <u>God</u> in all that we do. We invite
+      <u>you</u> explore our journey through photos and stories of our
+      experiences!
+    </div>
   </WelcomeItem>
 </template>
 
-<style scoped></style>
+<style scoped>
+/*iPad/Air/Mini/*/
+@media only screen and (max-width: 900px) {
+  .welcome h1 {
+    font-size: 2.5rem;
+  }
+  .welcome {
+    font-size: 1.75rem;
+    margin: 0;
+  }
+}
+
+/*Mobile*/
+@media only screen and (max-width: 450px) {
+  .welcome h1 {
+    font-size: 2.5rem;
+  }
+  .welcome {
+    font-size: 1.75rem;
+    margin: -9px;
+  }
+}
+</style>

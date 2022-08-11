@@ -160,4 +160,61 @@ form.register input[type="submit"] {
   z-index: 100;
   transition: all 0.5s;
 }
+
+/*iPad air*/
+@media only screen and (max-width: 900px) {
+  .forms {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: fit-content;
+    max-height: 20rem;
+    background-color: #f3f3f3;
+    opacity: 95%;
+    padding: 1rem 3rem;
+    box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.5s;
+    border-radius: 20px;
+  }
+}
+
+/*iPad mini*/
+@media only screen and (max-width: 780px) {
+  .forms {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: fit-content;
+    max-height: 20rem;
+    background-color: #f3f3f3;
+    opacity: 95%;
+    padding: 1rem 3rem;
+    box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.5s;
+    border-radius: 20px;
+  }
+}
+
+/*Mobile*/
+@media only screen and (max-width: 450px) {
+  .forms {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: fit-content;
+    max-height: 20rem;
+    background-color: #f3f3f3;
+    opacity: 95%;
+    padding: 1rem 3rem;
+    box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.5s;
+    border-radius: 20px;
+  }
+}
 </style>

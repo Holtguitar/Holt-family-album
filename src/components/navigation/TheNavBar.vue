@@ -37,11 +37,11 @@
       </li>
       <li class="header-albums-mobile">
         <RouterLink class="header-nav-mobile" to="/photo-albums"
-          ><img src="../../assets/public/icons/photos.png" class="home-icon"
+          ><img src="../../assets/public/icons/photos.png"
         /></RouterLink>
       </li>
       <li class="header-blog-mobile">
-        <RouterLink class="header-nav" to="/blog"
+        <RouterLink class="header-nav-mobile" to="/blog"
           ><img src="../../assets/public/icons/blog.png"
         /></RouterLink>
       </li>
@@ -77,29 +77,12 @@ export default {
     TheSignInModal,
   },
   data() {
-    return {
-      // width: null,
-      // height: null,
-    };
+    return {};
   },
-  // mounted() {
-  //   window.addEventListener("resize", this.onResize);
-  // },
-  // created() {
-  //   window.addEventListener("resize", this.onResize);
-  // },
-  // destroyed() {
-  //   window.removeEventListener("resize", this.onResize);
-  // },
   methods: {
     toggleClickSignIn() {
       this.$store.state.clickSignIn = !this.$store.state.clickSignIn;
     },
-    // onResize() {
-    //   this.width = window.innerWidth;
-    //   this.height = window.innerHeight;
-    //   console.log(this.width, this.height);
-    // },
   },
 };
 </script>
@@ -125,6 +108,13 @@ ul {
 
 .page-header-mobile {
   display: none;
+}
+
+.header-nav-signin-mobile,
+.header-nav-signout-mobile {
+  margin-top: 2%;
+  margin-top: 0%;
+  margin-left: 0;
 }
 
 li {
@@ -159,27 +149,81 @@ li {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 1000px) {
+/*iPad Air*/
+@media only screen and (max-width: 900px) {
   .page-header-full {
     display: none;
   }
 
   .page-header-mobile {
     position: relative;
-    justify-content: flex-end;
+    justify-content: center space-between;
+    align-items: center;
     display: flex;
-    /* width: 100vw;
-    height: 80vh; */
-    margin-top: -3%;
-    margin-left: -6.5%;
+    width: fit-content;
+    height: 50px;
+    top: 90%;
   }
 
   img {
-    width: 70px;
+    width: 30px;
+    margin: 5px;
   }
 
-  .home-icon {
-    background-color: transparent;
+  .header-albums-mobile {
+    margin-top: 2%;
+  }
+}
+
+/*iPad/Mini*/
+@media only screen and (max-width: 780px) {
+  .page-header-full {
+    display: none;
+  }
+
+  .page-header-mobile {
+    position: relative;
+    justify-content: center space-between;
+    align-items: center;
+    display: flex;
+    width: fit-content;
+    height: 50px;
+    top: 95%;
+    left: 20%;
+    /* background-color: rgb(103, 103, 163); */
+  }
+
+  img {
+    width: 40px;
+    margin: 15px;
+  }
+
+  .header-albums-mobile {
+    margin-top: 2%;
+  }
+}
+
+/*Mobile Size*/
+@media only screen and (max-width: 450px) {
+  .page-header-full {
+    display: none;
+  }
+
+  .page-header-mobile {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 80vw;
+    height: 50px;
+    left: 5%;
+    top: 90%;
+    /* background-color: rgb(103, 103, 163); */
+  }
+
+  img {
+    width: 30px;
+    /* background-color: rgb(0, 17, 255); */
   }
 }
 </style>
