@@ -224,11 +224,11 @@ li {
   }
 
   .header-home-mobile img {
-    width: 35px;
+    width: 32px;
   }
 
   .header-albums-mobile img {
-    width: 35px;
+    width: 32px;
   }
 
   img {
