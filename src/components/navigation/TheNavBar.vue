@@ -223,14 +223,6 @@ li {
     /* background-color: rgb(103, 103, 163); */
   }
 
-  .header-home-mobile img {
-    width: 30px;
-  }
-
-  .header-albums-mobile img {
-    width: 30px;
-  }
-
   img {
     width: 30px;
     /* background-color: rgb(0, 17, 255); */
