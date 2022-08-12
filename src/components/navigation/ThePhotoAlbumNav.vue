@@ -94,47 +94,13 @@ div {
   margin: 25px;
 }
 
-/* @media only screen and (max-width: 1500px) {
-  .header-nav {
-    margin: 5px;
-    color: rgb(39, 76, 117);
-    text-shadow: 1px 1px 1px rgb(95, 145, 202);
-    font-family: "Noto Serif", serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  ul {
+@media only screen and (max-width: 450px) {
+  .album-links {
+    list-style: none;
     display: flex;
-    right: 12%;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
   }
 
-  li {
-    list-style-type: none;
-    padding: 10px;
-  }
-} */
-/* 
-@media only screen and (max-width: 800px) {
-  .header-nav {
-    margin: 5px;
-    color: rgb(39, 76, 117);
-    text-shadow: 1px 1px 1px rgb(95, 145, 202);
-    font-family: "Noto Serif", serif;
-    font-size: 13px;
-    font-weight: 200;
-    text-decoration: none;
-  }
-
-  ul {
-    display: flex;
-    right: 16%;
-  }
-
-  li {
-    list-style-type: none;
-    padding: 10px;
-  }
-} */
-</style>
+  
