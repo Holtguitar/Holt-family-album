@@ -89,12 +89,11 @@ export default {
     top: 50%;
     left: 46%;
     transform: translate(-50%, -50%);
-
     box-shadow: 10rem 10rem 10rem 100rem rgba(8, 8, 8, 0.3);
     z-index: 1000;
     transition: all 0.5s;
     overflow-y: scroll;
-    max-height: 50vh;
+    max-height: 90vh;
     max-width: 110vw;
     min-height: 25vh;
     min-width: 80vw;
