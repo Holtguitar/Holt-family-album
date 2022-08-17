@@ -94,7 +94,7 @@ export default {
     z-index: 1000;
     transition: all 0.5s;
     overflow-y: scroll;
-    max-height: 50vh;
+    max-height: 90vh;
     max-width: 110vw;
     min-height: 25vh;
     min-width: 80vw;
