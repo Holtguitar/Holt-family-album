@@ -2,7 +2,7 @@
   <blog-creator></blog-creator>
   <section @submit.prevent="loadBlogPreviews">
     <base-card>
-      <h2>Read up on our journey!</h2>
+      <h2>Read up on our journey</h2>
       <p v-if="isLoading">Loading results. . .</p>
       <p v-else-if="!isLoading && error">{{ error }}</p>
       <p v-else-if="!isLoading && (!results || results.length === 0)">
@@ -208,6 +208,12 @@ ul {
     margin: 0;
     margin-top: 50px;
     left: 5%;
+  }
+
+  .arrow-left {
+    position: absolute;
+    left: 0%;
+    width: 30px;
   }
 }
 </style>

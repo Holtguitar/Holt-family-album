@@ -14,14 +14,29 @@ import WelcomeItem from "./WelcomeItem.vue";
 </template>
 
 <style scoped>
-/*iPad/Air/Mini/*/
+/*iPad*/
 @media only screen and (max-width: 900px) {
   .welcome h1 {
     font-size: 2.5rem;
   }
   .welcome {
     font-size: 1.75rem;
-    margin: 0;
+    top: 15%;
+    left: 6%;
+    text-align: center;
+  }
+}
+
+/*iPad Air/Mini/ */
+@media only screen and (max-width: 800px) {
+  .welcome h1 {
+    font-size: 2.5rem;
+  }
+  .welcome {
+    font-size: 1.75rem;
+    top: 15%;
+    left: 6%;
+    text-align: center;
   }
 }
 

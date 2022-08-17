@@ -18,7 +18,6 @@ export default {
   methods: {
     previewToggle() {
       this.preview = !this.preview;
-      console.log(this.preview);
     },
   },
 };
@@ -73,5 +72,34 @@ export default {
 
 .btn--close-modal:active {
   text-shadow: 2px 2px 20px grey;
+}
+
+/*iPad Air */
+@media only screen and (max-width: 900px) {
+}
+
+/*iPad mini */
+@media only screen and (max-width: 800px) {
+}
+
+/*iPhone */
+@media only screen and (max-width: 450px) {
+  .fullview img {
+    position: fixed;
+    top: 50%;
+    left: 46%;
+    transform: translate(-50%, -50%);
+
+    box-shadow: 10rem 10rem 10rem 100rem rgba(8, 8, 8, 0.3);
+    z-index: 1000;
+    transition: all 0.5s;
+    overflow-y: scroll;
+    max-height: 50vh;
+    max-width: 110vw;
+    min-height: 25vh;
+    min-width: 80vw;
+    margin-top: 15px;
+    margin-bottom: 50px;
+  }
 }
 </style>

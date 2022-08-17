@@ -128,15 +128,12 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 75vw;
-  /* min-height: 95vh;
-  max-height: fit-content; */
   padding: 2rem 6rem;
   box-shadow: 10rem 10rem 10rem 100rem rgba(39, 39, 39, 0.3);
   z-index: 1000;
   transition: all 0.5s;
   border-radius: 10px;
   border-top: solid 20px rgb(252, 252, 252);
-  /* border-left: solid 20px rgb(252, 252, 252); */
   border-bottom: solid 20px rgb(252, 252, 252);
   background-color: rgb(252, 252, 252);
   overflow-y: scroll;
@@ -209,7 +206,6 @@ export default {
   position: sticky;
   top: 0%;
   margin-left: 100%;
-  /* top: 0.5rem; */
   font-size: 20px;
   cursor: pointer;
   border: none;
@@ -259,6 +255,35 @@ export default {
     padding: 1rem;
     box-shadow: 2px 2px 2px 2px grey;
     background-color: rgb(255, 255, 255);
+  }
+
+  .full-view {
+    width: 90vw;
+    padding: 15px 2.5rem;
+  }
+
+  .full-view h1 {
+    width: 10rem !important;
+    left: -50px;
+  }
+
+  .full-view h1 {
+    font-size: 10px;
+  }
+
+  .full-view hr {
+    width: 80%;
+    left: 10%;
+  }
+
+  .full-view .date {
+    font-size: 8px;
+    left: 30%;
+  }
+
+  .full-view .btn--close-modal {
+    top: -5%;
+    margin-left: 90%;
   }
 }
 </style>

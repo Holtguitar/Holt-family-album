@@ -31,7 +31,7 @@
   <div class="page-header-mobile">
     <ul>
       <li class="header-home-mobile">
-        <RouterLink class="header-nav" to="/"
+        <RouterLink class="header-nav-mobile" to="/"
           ><img src="../../assets/public/icons/home.png"
         /></RouterLink>
       </li>
@@ -165,6 +165,7 @@ li {
     top: 95%;
     left: 20%;
     /* background-color: rgb(103, 103, 163); */
+    /* margin-bottom: 25px; */
   }
 
   img {
@@ -175,10 +176,18 @@ li {
   .header-albums-mobile {
     margin-top: 2%;
   }
+
+  .header-home-mobile img {
+    width: 50px;
+  }
+
+  .header-albums-mobile img {
+    width: 50px;
+  }
 }
 
 /*iPad/Mini*/
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 900px) {
   .page-header-full {
     display: none;
   }
@@ -192,6 +201,7 @@ li {
     height: 50px;
     top: 95%;
     left: 20%;
+    /* margin-bottom: 25px; */
     /* background-color: rgb(103, 103, 163); */
   }
 
@@ -202,6 +212,14 @@ li {
 
   .header-albums-mobile {
     margin-top: 2%;
+  }
+
+  .header-home-mobile img {
+    width: 50px;
+  }
+
+  .header-albums-mobile img {
+    width: 50px;
   }
 }
 
@@ -220,12 +238,18 @@ li {
     height: 50px;
     left: 5%;
     top: 95%;
-    /* background-color: rgb(103, 103, 163); */
   }
 
   img {
     width: 30px;
-    /* background-color: rgb(0, 17, 255); */
+  }
+
+  .header-home-mobile img {
+    width: 34px;
+  }
+
+  .header-albums-mobile img {
+    width: 38px;
   }
 }
 </style>

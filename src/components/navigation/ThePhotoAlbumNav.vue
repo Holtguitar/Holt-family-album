@@ -8,25 +8,33 @@ import { RouterLink } from "vue-router";
       <RouterLink to="/photo-albums/family">
         <div class="family-link" id="image-container"></div>
       </RouterLink>
-      <RouterLink to="/photo-albums/family">Family</RouterLink>
+      <RouterLink to="/photo-albums/family" class="link-text"
+        >Family</RouterLink
+      >
     </div>
     <div class="album">
       <RouterLink to="/photo-albums/maternity">
         <div class="maternity-link"></div>
       </RouterLink>
-      <RouterLink to="/photo-albums/maternity">Maternity</RouterLink>
+      <RouterLink to="/photo-albums/maternity" class="link-text"
+        >Maternity</RouterLink
+      >
     </div>
     <div class="album">
       <RouterLink to="/photo-albums/wedding">
         <div class="wedding-link"></div>
       </RouterLink>
-      <RouterLink to="/photo-albums/wedding">Wedding</RouterLink>
+      <RouterLink to="/photo-albums/wedding" class="link-text"
+        >Wedding</RouterLink
+      >
     </div>
     <div class="album">
       <RouterLink to="/photo-albums/adventure">
         <div class="adventure-link"></div>
       </RouterLink>
-      <RouterLink to="/photo-albums/adventure">Adventures</RouterLink>
+      <RouterLink to="/photo-albums/adventure" class="link-text"
+        >Adventures</RouterLink
+      >
     </div>
   </section>
 </template>
@@ -94,47 +102,25 @@ div {
   margin: 25px;
 }
 
-/* @media only screen and (max-width: 1500px) {
-  .header-nav {
-    margin: 5px;
-    color: rgb(39, 76, 117);
-    text-shadow: 1px 1px 1px rgb(95, 145, 202);
-    font-family: "Noto Serif", serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  ul {
+/*iPad/Mini*/
+@media only screen and (max-width: 900px) {
+  .album-links {
     display: flex;
-    right: 12%;
+    flex-direction: column;
+    left: 5%;
+    margin-top: 15px !important;
   }
 
-  li {
-    list-style-type: none;
-    padding: 10px;
+  .link-text {
+    left: -3%;
   }
-} */
-/* 
+}
+
+/*Air/Mini*/
 @media only screen and (max-width: 800px) {
-  .header-nav {
-    margin: 5px;
-    color: rgb(39, 76, 117);
-    text-shadow: 1px 1px 1px rgb(95, 145, 202);
-    font-family: "Noto Serif", serif;
-    font-size: 13px;
-    font-weight: 200;
-    text-decoration: none;
-  }
+}
 
-  ul {
-    display: flex;
-    right: 16%;
-  }
-
-  li {
-    list-style-type: none;
-    padding: 10px;
-  }
-} */
+/*Mobile Size*/
+@media only screen and (max-width: 450px) {
+}
 </style>

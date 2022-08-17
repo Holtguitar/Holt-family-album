@@ -123,4 +123,24 @@ ul {
 .arrow-icon {
   width: 5%;
 }
+
+/*iPad Air */
+@media only screen and (max-width: 900px) {
+}
+
+/*iPad mini */
+@media only screen and (max-width: 800px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/*iPhone */
+@media only screen and (max-width: 450px) {
+  .gallery {
+    display: flex !important;
+    flex-direction: column !important;
+    left: 5px;
+  }
+}
 </style>
